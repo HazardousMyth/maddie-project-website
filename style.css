@@ -1,0 +1,53 @@
+/* THE MADDIE PROJECT | Landing page, version 1 */
+@font-face {
+  font-family: "Broken Glass";
+  src: url("fonts/BrokenGlass.ttf") format("truetype");
+  font-display: swap;
+}
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body { background: #070909; color: #e4ece8; }
+.landing { min-height: 100svh; background: radial-gradient(ellipse at 15% 5%, #0c1511 0%, #070909 50%, #050606 100%); }
+.masthead { padding: clamp(24px, 4vw, 58px); }
+.brand {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  font-family: "Broken Glass", "Arial Black", Impact, sans-serif;
+  font-size: clamp(1.3rem, 3vw, 2.7rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: .035em;
+  color: #e4ece8;
+  text-shadow: 0 0 16px rgba(91, 173, 122, .09);
+  animation: flicker 11s infinite;
+}
+.brand::before, .brand::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  font: inherit;
+  letter-spacing: inherit;
+}
+.brand::before { color: #76f6b0; animation: glitch-left 9s infinite; }
+.brand::after { color: #e1f3f0; animation: glitch-right 9s infinite; }
+@keyframes flicker {
+  0%, 36%, 38%, 69%, 71%, 100% { opacity: 1; }
+  37%, 70% { opacity: .77; }
+}
+@keyframes glitch-left {
+  0%, 46%, 48%, 84%, 86%, 100% { opacity: 0; transform: none; clip-path: none; }
+  46.5%, 85% { opacity: .8; transform: translate(-3px, 1px); clip-path: inset(15% 0 58% 0); }
+  47% { opacity: .5; transform: translate(2px, -1px); clip-path: inset(63% 0 12% 0); }
+}
+@keyframes glitch-right {
+  0%, 46%, 48%, 84%, 86%, 100% { opacity: 0; transform: none; clip-path: none; }
+  46.5%, 85% { opacity: .7; transform: translate(3px, -1px); clip-path: inset(57% 0 18% 0); }
+  47% { opacity: .55; transform: translate(-2px, 1px); clip-path: inset(12% 0 62% 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand, .brand::before, .brand::after { animation: none; }
+}
