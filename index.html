@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0b0c">
-  <meta name="description" content="What is The Maddie Project?">
-  <title>The Maddie Project</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0c">
+<meta name="description" content="What is The Maddie Project?">
+<title>The Maddie Project</title>
+<style>
 :root { color-scheme: dark; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #0b0b0c; color: #e7e4df; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
 .page { width: min(100% - 48px, 760px); margin: 0 auto; padding: clamp(72px, 11vw, 144px) 0 100px; }
 .intro { margin-bottom: clamp(64px, 10vw, 110px); }
-.eyebrow { margin: 0 0 42px; font-size: 11px; letter-spacing: .34em; color: #92908d; text-transform: uppercase; }
 h1 { margin: 0; font-family: 'Times New Roman', Times, serif; font-size: clamp(44px, 7vw, 78px); font-weight: 400; line-height: 1.08; letter-spacing: -.035em; max-width: 700px; }
 .rule { width: 72px; height: 1px; background: #77716c; margin-top: 45px; }
 .story { max-width: 630px; }
@@ -24,12 +23,9 @@ h1 { margin: 0; font-family: 'Times New Roman', Times, serif; font-size: clamp(4
 .closing { margin-top: clamp(85px, 13vw, 140px); }
 .closing .rule { margin: 0 0 36px; }
 .closing p { margin: 0; font-family: 'Times New Roman', Times, serif; font-size: clamp(28px, 4vw, 42px); line-height: 1.3; color: #f2eee8; }
-@media (max-width: 520px) { .page { width: min(100% - 38px, 760px); padding-top: 65px; padding-bottom: 80px; } .eyebrow { margin-bottom: 35px; } .intro { margin-bottom: 65px; } .passage p { line-height: 1.75; } }
-
-/* Original broken-glass brand title and animated interference */
 @font-face { font-family: 'Broken Glass'; src: url('fonts/BrokenGlass.ttf') format('truetype'); font-display: swap; }
-.site-header { padding: 30px clamp(19px, 5vw, 75px) 0; }
-.glitch { font-family: 'Broken Glass', Impact, monospace; font-size: clamp(27px, 5vw, 70px); font-weight: normal; line-height: 1.15; letter-spacing: .04em; position: relative; display: inline-block; color: #e9f4ed; animation: shake 4.3s infinite, flash 5.7s infinite; }
+.site-header { padding: 30px clamp(19px, 5vw, 75px) 0; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+.glitch { font-family: 'Broken Glass', Impact, monospace; font-size: clamp(27px, 4.1vw, 62px); font-weight: normal; line-height: 1.15; letter-spacing: .04em; position: relative; display: inline-block; color: #e9f4ed; animation: shake 4.3s infinite, flash 5.7s infinite; flex-shrink: 1; }
 .glitch::before, .glitch::after { content: attr(data-text); position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .glitch::before { color: #00ffd5; text-shadow: -4px 0 #00ffd5; clip-path: inset(0 0 55% 0); animation: tear1 2.4s infinite steps(1,end); }
 .glitch::after { color: #ff326e; text-shadow: 4px 0 #ff326e; clip-path: inset(65% 0 0 0); animation: tear2 3.1s infinite steps(1,end); }
@@ -37,65 +33,35 @@ h1 { margin: 0; font-family: 'Times New Roman', Times, serif; font-size: clamp(4
 @keyframes tear2 { 0%,16%,23%,56%,63%,100% { transform: translate(0); opacity: 0; } 17% { transform: translate(13px,2px); opacity: 1; } 18% { transform: translate(-8px,-3px); opacity: 1; } 19% { transform: translate(5px,1px); opacity: 1; } 57% { transform: translate(-14px,2px); opacity: 1; } 58% { transform: translate(10px,-2px); opacity: 1; } }
 @keyframes shake { 0%,32%,35%,67%,70%,100% { transform: translate(0); } 33% { transform: translate(3px,-1px) skewX(-3deg); } 34% { transform: translate(-5px,2px) skewX(2deg); } 68% { transform: translate(-4px,0); } 69% { transform: translate(4px,1px); } }
 @keyframes flash { 0%,44%,46%,89%,91%,100% { opacity: 1; } 45%,90% { opacity: .5; } }
-@media (prefers-reduced-motion: reduce) { .glitch, .glitch::before, .glitch::after { animation: none; } .glitch::before, .glitch::after { display: none; } }
-
+.site-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 16px 26px; }
+.nav-item { display: inline-block; font-family: 'Times New Roman', Times, serif; font-size: clamp(16px, 1.5vw, 20px); font-weight: 400; white-space: nowrap; color: #e7e4df; border-bottom: 1px solid #c7c5c2; padding: 0 0 5px; cursor: default; transform: translateY(0) scale(1); transition: transform .22s ease, color .22s ease, border-color .22s ease; }
+.nav-item:hover { transform: translateY(-4px) scale(1.09); color: #fff; border-color: #fff; }
+@media (max-width: 980px) { .site-header { flex-direction: column; align-items: flex-start; gap: 24px; } .site-nav { justify-content: flex-start; } }
+@media (max-width: 520px) { .page { width: min(100% - 38px, 760px); padding-top: 65px; padding-bottom: 80px; } .intro { margin-bottom: 65px; } .passage p { line-height: 1.75; } .site-header { gap: 20px; } .site-nav { gap: 13px 20px; } .nav-item { font-size: 17px; } }
+@media (prefers-reduced-motion: reduce) { .glitch, .glitch::before, .glitch::after { animation: none; } .glitch::before, .glitch::after { display: none; } .nav-item { transition: none; } }
 </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="glitch" data-text="THE MADDIE PROJECT">THE MADDIE PROJECT</div>
-  </header>
-  <main class="page">
-    <header class="intro">
-      <h1>What is the Maddie Project?</h1>
-      <div class="rule" aria-hidden="true"></div>
-    </header>
-
-    <article class="story" aria-label="About The Maddie Project">
-      <section class="passage">
-        <p>Not everything you witness happened.</p>
-        <p>Not everyone you encounter exists.</p>
-        <p>And not every truth begins with something real.</p>
-      </section>
-
-      <section class="passage">
-        <p>Some stories are written.</p>
-        <p>Others are scattered, concealed in fragments, and left for someone to piece together.</p>
-      </section>
-
-      <section class="passage">
-        <p>A photograph. A few seconds of footage. A sentence without context.</p>
-        <p>Individually, they mean nothing.</p>
-        <p>Together, they might mean everything.</p>
-      </section>
-
-      <section class="passage">
-        <p>But what happens when the fragments don't fit?</p>
-        <p>When the questions begin to outnumber the answers?</p>
-        <p>When something you thought you understood suddenly becomes something else entirely?</p>
-      </section>
-
-      <section class="passage">
-        <p>Perhaps you've already seen the beginning.</p>
-        <p>Perhaps you've been looking in the wrong place.</p>
-        <p>Or perhaps there was never anything to find.</p>
-      </section>
-
-      <section class="passage">
-        <p>Some things are hidden for a reason.</p>
-        <p>Others are left in plain sight.</p>
-        <p>The difference isn't always obvious.</p>
-      </section>
-
-      <section class="passage last-passage">
-        <p>And the closer you look, the less certain you become of what you're actually seeing.</p>
-      </section>
-    </article>
-
-    <footer class="closing">
-      <div class="rule" aria-hidden="true"></div>
-      <p>Welcome to The Maddie Project.</p>
-    </footer>
-  </main>
+<header class="site-header">
+  <div class="glitch" data-text="THE MADDIE PROJECT">THE MADDIE PROJECT</div>
+  <nav class="site-nav" aria-label="Website sections">
+    <span class="nav-item">The Beginning</span>
+    <span class="nav-item">The Archive</span>
+    <span class="nav-item">Behind the Project</span>
+  </nav>
+</header>
+<main class="page">
+  <header class="intro"><h1>What is the Maddie Project?</h1><div class="rule" aria-hidden="true"></div></header>
+  <article class="story" aria-label="About The Maddie Project">
+    <section class="passage"><p>Not everything you witness happened.</p><p>Not everyone you encounter exists.</p><p>And not every truth begins with something real.</p></section>
+    <section class="passage"><p>Some stories are written.</p><p>Others are scattered, concealed in fragments, and left for someone to piece together.</p></section>
+    <section class="passage"><p>A photograph. A few seconds of footage. A sentence without context.</p><p>Individually, they mean nothing.</p><p>Together, they might mean everything.</p></section>
+    <section class="passage"><p>But what happens when the fragments don't fit?</p><p>When the questions begin to outnumber the answers?</p><p>When something you thought you understood suddenly becomes something else entirely?</p></section>
+    <section class="passage"><p>Perhaps you've already seen the beginning.</p><p>Perhaps you've been looking in the wrong place.</p><p>Or perhaps there was never anything to find.</p></section>
+    <section class="passage"><p>Some things are hidden for a reason.</p><p>Others are left in plain sight.</p><p>The difference isn't always obvious.</p></section>
+    <section class="passage last-passage"><p>And the closer you look, the less certain you become of what you're actually seeing.</p></section>
+  </article>
+  <footer class="closing"><div class="rule" aria-hidden="true"></div><p>Welcome to The Maddie Project.</p></footer>
+</main>
 </body>
 </html>
